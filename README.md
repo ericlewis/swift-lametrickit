@@ -1,6 +1,6 @@
 # LaMetricKit
 
-Swift library for interacting with [LaMetric Time](https://lametric.com/en-US) devices on the local network. You will need a [developer account](https://developer.lametric.com/).
+Swift library for interacting with [LaMetric TIME](https://lametric.com/en-US) devices on the local network. You will need a [developer account](https://developer.lametric.com/).
 
 __Note: macOS doesn't support the static image icon API yet.__
 

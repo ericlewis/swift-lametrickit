@@ -11,7 +11,7 @@ public struct Notification: Encodable {
   public var priority: Priority?
 
   /// Represents the nature of notification.
-  public var iconType: IconType?
+  public var icon_type: IconType?
 
   /// The time notification lives in queue to be displayed in milliseconds. **Default lifetime is 2 minutes.**
   ///
@@ -27,7 +27,7 @@ public struct Notification: Encodable {
   ) {
     self.model = model
     self.priority = priority
-    self.iconType = iconType
+    self.icon_type = iconType
     self.lifetime = lifetime
   }
 
@@ -41,7 +41,7 @@ public struct Notification: Encodable {
   ) {
     self.model = .init(frames: frames, sound: sound, cycles: cycles)
     self.priority = priority
-    self.iconType = iconType
+    self.icon_type = iconType
     self.lifetime = lifetime
   }
 }
@@ -79,7 +79,7 @@ extension Notification {
   public enum IconType: String, Encodable {
 
     /// no notification icon will be shown.
-    case none
+    case hidden = "none"
 
     /// “i” icon will be displayed prior to the notification.
     ///

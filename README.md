@@ -83,5 +83,11 @@ Notification {
   }
 }
 ```
+#### Use `UIImage`s as icons
+```swift
+Notification {
+  Simple("Hello World!", icon: .staticImage(UIImage(named: "HandWave")!))
+}
+```
 ## License
 MIT License, Copyright 2022 Eric Lewis.

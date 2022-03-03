@@ -47,5 +47,41 @@ let notification = Notification {
 try await LaMetricKit(config).push(notification) // Watch your LaMetric!
 ```
 
+### Creating Notifications
+Notfications are the high-level object we send to the device, it consists of a few properties 
+and a collection of frames. Frames are the primary means of controlling the visual interface.
+Sounds and other settings are applied at the notification level.
+
+#### There are two ways of creating notifications, the first way:
+```swift
+Notification {
+  Simple("Hello World!")
+  Simple("How are you?") // multiple frames are this easy!
+}
+```
+#### The second way:
+```swift
+Notification(frames: [.simple(text: "Hello World!")])
+```
+#### There are also a few variations of frames:
+```swift
+Notification {
+  Simple("Hello!")
+  Chart([1, 2, 3, 4])
+  Progress(10, in: 0...100)
+}
+```
+#### You can use conditionals too:
+```swift
+let morning = true
+
+Notification {
+  if morning {
+    Simple("Good Morning!")
+  } else {
+    Simple("Where did the morning go?!")
+  }
+}
+```
 ## License
 MIT License, Copyright 2022 Eric Lewis.

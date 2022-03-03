@@ -19,7 +19,7 @@ import PackageDescription
 let package = Package(
   name: "MyAwesomeApp",
   dependencies: [
-    .package(url: "https://github.com/ericlewis/swift-lametrickit", from: "0.1.0"),
+    .package(url: "https://github.com/ericlewis/swift-lametrickit", from: "0.2.0"),
   ]
 )
 ```

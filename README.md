@@ -90,4 +90,4 @@ Notification {
 }
 ```
 ## License
-MIT License, Copyright 2022 Eric Lewis.
+LaMetricKit is released under the MIT license. See [LICENSE](LICENSE) for details.

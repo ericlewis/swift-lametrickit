@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 
 // MARK: Encodables
 
@@ -29,6 +30,11 @@ public struct Notification: Encodable {
     self.priority = priority
     self.icon_type = iconType
     self.lifetime = lifetime
+    if #available(iOS 14, tvOS 14, watchOS 8, macOS 11, *) {
+      if model.frames.count > 20 {
+        tooManyFramesWarning()
+      }
+    }
   }
 
   public init(
@@ -39,10 +45,16 @@ public struct Notification: Encodable {
     iconType: Notification.IconType? = nil,
     lifetime: Int? = nil
   ) {
-    self.model = .init(frames: frames, sound: sound, cycles: cycles)
-    self.priority = priority
-    self.icon_type = iconType
-    self.lifetime = lifetime
+    self.init(
+      model: .init(
+        frames: frames,
+        sound: sound,
+        cycles: cycles
+      ),
+      priority: priority,
+      iconType: iconType,
+      lifetime: lifetime
+    )
   }
 }
 
@@ -345,6 +357,15 @@ extension Notification {
 
 public enum LaMetricError: Error {
   case invalidHostURL
+}
+
+@available(macOS 11, *)
+@available(iOS 14, *)
+@available(watchOS 7, *)
+@available(tvOS 14, *)
+extension Notification {
+  fileprivate static var logger: Logger { Logger(subsystem: "LaMetricKit", category: "Notification") }
+  fileprivate func tooManyFramesWarning() { Self.logger.warning("There is an undocumented limit of 20 frames per notification. This notification may fail to push.") }
 }
 
 #if canImport(UIKit)

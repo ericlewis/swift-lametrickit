@@ -46,14 +46,14 @@ public struct Chart: Frame {
   }
 }
 
-public struct Goal: Frame {
+public struct Progress: Frame {
   private let frame: Notification.Model.Frame
   public func buildFrames() -> [NotificationFrame] { [frame] }
 
   public init(
     _ current: Int,
     in range: ClosedRange<Int>,
-    unit: String,
+    unit: String = "",
     icon: Notification.Model.Frame.Icon = .identified(0)
   ) {
     self.frame = .goal(

@@ -43,6 +43,12 @@ extension LaMetricKit {
     let result = try decoder.decode(Notification.PushResponse.self, from: data)
     return result
   }
+
+  /// Send notification directly to LaMetric  device on local network.
+  @discardableResult
+  public func push(notification: () -> Notification) async throws -> Notification.PushResponse {
+    try await push(notification())
+  }
 }
 
 extension LaMetricKit {
